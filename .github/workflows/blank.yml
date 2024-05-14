@@ -26,21 +26,3 @@ jobs:
       # Run unit tests
       - name: Run Unit Tests
         run: ./gradlew test
-
-      # Run instrumented tests (if any)
-      # - name: Run Instrumented Tests
-      #   run: ./gradlew connectedAndroidTest
-
-      # Build APKs and AAB
-      - name: Build APKs and AAB
-        run: ./gradlew assembleDebug assembleRelease bundleRelease
-
-      # Upload generated artifacts
-      - name: Upload APKs and AAB
-        uses: actions/upload-artifact@v2
-        with:
-          name: apks-and-aab
-          path: |
-            app/build/outputs/apk/debug/
-            app/build/outputs/apk/release/
-            app/build/outputs/bundle/release/
