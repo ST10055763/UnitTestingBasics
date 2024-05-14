@@ -1,28 +1,27 @@
-name: Android Build and Test
+name: blank
 
 on:
   push:
     branches:
-      - 'master'
-  workflow_dispatch:
+      - main
 
 jobs:
-  build-and-test:
+  build:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set Up JDK
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Grant execute permission to Gradle wrapper
-        run: chmod +x ./gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
 
-      # Run unit tests
-      - name: Run Unit Tests
+      - name: Run tests
         run: ./gradlew test
